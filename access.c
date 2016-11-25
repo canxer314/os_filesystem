@@ -7,7 +7,6 @@ int access(int iInode, char c)
 {
     if(c == 'r')
     {
-        // 自己是创建者
         if(dir_dinode[iInode].di_uid == pwd[iSignLogin].p_uid)
         {
             if( (dir_dinode[iInode].di_mode & UDIREAD ) != 0 )
@@ -16,7 +15,6 @@ int access(int iInode, char c)
                 return 0;
         }
 
-        //自己是同组
         else if (dir_dinode[iInode].di_gid == pwd[iSignLogin].p_gid)
         {
             if( (dir_dinode[iInode].di_mode & GDIREAD ) != 0 )
@@ -25,7 +23,6 @@ int access(int iInode, char c)
                 return 0;
         }
 
-        //其他人
         else if( (dir_dinode[iInode].di_mode & ODIREAD ) != 0 )
         {
             return 1;
@@ -35,7 +32,6 @@ int access(int iInode, char c)
     }
     else if( c == 'w')
     {
-        // 自己是创建者
         if(dir_dinode[iInode].di_uid == pwd[iSignLogin].p_uid)
         {
             if( (dir_dinode[iInode].di_mode & UDIWRITE ) != 0 )
@@ -44,7 +40,6 @@ int access(int iInode, char c)
                 return 0;
         }
 
-        //自己是同组
         else if (dir_dinode[iInode].di_gid == pwd[iSignLogin].p_gid)
         {
             if( (dir_dinode[iInode].di_mode & GDIWRITE ) != 0 )
@@ -53,7 +48,6 @@ int access(int iInode, char c)
                 return 0;
         }
 
-        //其他人
         else if( (dir_dinode[iInode].di_mode & ODIWRITE ) != 0 )
         {
             return 1;
@@ -121,7 +115,7 @@ int grantAccess(int iInode, char iden, char acc)
 int changeFileGid(int iInode, int newGid)
 {
     dir_dinode[iInode].di_gid = newGid;
-    printf("Change Gid successful！\n");
+    printf("Change Gid successfully!\n");
     return 1;
 }
 
