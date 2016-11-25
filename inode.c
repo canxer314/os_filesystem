@@ -3,7 +3,7 @@ Author:     canxer
 
 time:       7/13
 
-function :  i节点函数
+function :  
 */
 /*
 #include <stdio.h>
@@ -12,7 +12,7 @@ function :  i节点函数
 #include "filesys.h"
 
 
-int ialloc()//磁盘i节点
+int ialloc()
 {
 		int ret;
 		//extern filesys fs;
@@ -43,7 +43,7 @@ int ifree()
 		return 0;
 }
 
-int iget()//内存i节点
+int iget()
 {
 		return 0;
 }
@@ -53,7 +53,7 @@ int iput()
 		return 0;
 }
 
-int balloc()//磁盘块分配
+int balloc()
 {
 		return 0;
 }
