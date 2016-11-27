@@ -34,10 +34,8 @@ int format()
     fs.s_ninode = FILEBLK;
     fs.s_fmod = 'n';
 
-    fseek( fd, ( 2 + DINODEBLK ) * BLOCKSIZ, SEEK_SET );//寻址到目录文件区
+    fseek( fd, ( 2 + DINODEBLK ) * BLOCKSIZ, SEEK_SET );
 
-//i节点区格式化
-//第一组
     if ( fileblock >= NICINOD )
     {
         fseek( fd, -NICINOD * DINODESIZ, SEEK_CUR );
@@ -86,10 +84,8 @@ int format()
         }
     }
 
-//目录文件区格式化
     fileblock = FILEBLK;
     fseek( fd, 0, SEEK_END );
-//第一组
     if ( fileblock >= NICFREE )
     {
         fseek( fd, -NICFREE * BLOCKSIZ, SEEK_CUR );
@@ -141,7 +137,6 @@ int format()
     /*fseek( fd, blocksiz, seek_set );
     fwrite( &fs, sizeof( filesys ), 1, fd );*/
 
-    //初始化根目录
     unsigned short tempinode_no;
     char * temp;
     //dir dir_new, *dir_new1;
@@ -150,10 +145,10 @@ int format()
     iformat(tempinode_no);
     direct firstdirect, seconddirect;
     strcpy(firstdirect.d_name, ".");
-    firstdirect.d_ino = tempinode_no;//刚目录的当前目录（自己）的节点编号
+    firstdirect.d_ino = tempinode_no;
     strcpy(seconddirect.d_name, "..");
-    seconddirect.d_ino = tempinode_no;//刚目录的上一级目录的节点编号（生成该目录的目录的节点编号）
-    dir_dinode[tempinode_no].di_size =DIRNUM*sizeof(direct)+sizeof(int);//新建的目录已经有了两项
+    seconddirect.d_ino = tempinode_no;
+    dir_dinode[tempinode_no].di_size =DIRNUM*sizeof(direct)+sizeof(int);
     dir_dinode[tempinode_no].di_uid = 0;
     dir_dinode[tempinode_no].di_gid = 0;
     dir_dinode[tempinode_no].di_mode = UDIREAD + UDIWRITE + UDIEXICUTE + GDIREAD;
@@ -167,7 +162,7 @@ int format()
     write(tempinode_no, temp, sizeof(dir));
     iput(tempinode_no, dir_dinode);
 
-    active_inode = tempinode_no;//初始化当前活动节点和活动目录
+    active_inode = tempinode_no;
     temp = (char *)&working_dir;
     read(active_inode, temp,sizeof(dir));
 
@@ -179,6 +174,3 @@ int format()
 
     return 0;
 }
-
-
-

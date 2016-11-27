@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <conio.h>
+//#include <conio.h>
 #include <ctype.h>
 #include "filesys.h"
 #include "time.h"

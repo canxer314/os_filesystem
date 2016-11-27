@@ -1,15 +1,6 @@
-/*
-Author:     zzy
-
-time:       7/11
-
-function :文件系统控制命令 cmd形式
-                已空格 ，分割 保存在二薇数组caCommand中
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
+//#include <windows.h>
 #include "filesys.h"
 
 int command()
@@ -39,15 +30,15 @@ int command()
     }
 
     /* command结果测试
-    int i = iCommandCount;
-    int temp = i;
-    printf("%d\n\n",iCommandCount);
-    while(i)
-    {
+       int i = iCommandCount;
+       int temp = i;
+       printf("%d\n\n",iCommandCount);
+       while(i)
+       {
 
-        printf("%s\n",caCommand[temp - i]);
-        i--;
-    }
+       printf("%s\n",caCommand[temp - i]);
+       i--;
+       }
     */
 
     return 1;
