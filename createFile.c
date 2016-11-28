@@ -29,8 +29,8 @@ int creatfile()
 
 
         /* dir_dinode[active_inode].i_count = 1;    //访问计数
-         dir_dinode[active_inode].i_flag = 'Y'; //已使用
-         dir_dinode[active_inode].i_ino = iCountI;*/
+           dir_dinode[active_inode].i_flag = 'Y'; //已使用
+           dir_dinode[active_inode].i_ino = iCountI;*/
 
         dir_dinode[active_inode].di_mode =DIFILE + UDIREAD + UDIWRITE +UDIEXICUTE; //创建者权限
         dir_dinode[active_inode].di_gid = pwd[iSignLogin].p_gid;
@@ -39,20 +39,20 @@ int creatfile()
         dir_dinode[active_inode].di_size = iLen;
         dir_dinode[active_inode].di_number = 1;  //关联文件计数
         /*
-        if(dir_dinode[active_inode].di_size % 512 == 0)
-        {
-            iCountB += dir_dinode[active_inode].di_size/512 - 1;
-        }
-        else
-            iCountB += dir_dinode[active_inode].di_size/512;
+          if(dir_dinode[active_inode].di_size % 512 == 0)
+          {
+          iCountB += dir_dinode[active_inode].di_size/512 - 1;
+          }
+          else
+          iCountB += dir_dinode[active_inode].di_size/512;
 
-        for(int i = 0; i< iCountB ; i++)
-        {
-            dir_dinode[active_inode].di_addr[i] = balloc();
-            //拷贝输入内容进去
-            fseek(fd, DATASTART + dir_dinode[active_inode].di_addr[i] * BLOCKSIZ ,SEEK_SET);
-            memcpy(fd , caTempFile[i * BLOCKSIZ] , BLOCKSIZ);
-        }
+          for(int i = 0; i< iCountB ; i++)
+          {
+          dir_dinode[active_inode].di_addr[i] = balloc();
+          //拷贝输入内容进去
+          fseek(fd, DATASTART + dir_dinode[active_inode].di_addr[i] * BLOCKSIZ ,SEEK_SET);
+          memcpy(fd , caTempFile[i * BLOCKSIZ] , BLOCKSIZ);
+          }
         */
 
         write(iCountI, caTempFile, dir_dinode[active_inode].di_size );
