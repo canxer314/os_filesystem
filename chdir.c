@@ -8,7 +8,7 @@ int chdir()
 {
     if(strcmp(caCommand[1],"")==0)
     {
-        printf("跳转的路径不能为空！");
+        printf("璺宠浆鐨勮矾寰勪笉鑳戒负绌猴紒");
         return 0;
     }
     else if(strcmp(caCommand[1],".")==0)
@@ -43,6 +43,6 @@ int chdir()
             }
         }
     }
-    printf("您索要跳转的目录不存在！\n");
+    printf("鎮ㄦ墍瑕佽烦杞殑鐩綍涓嶅瓨鍦紒\n");
     return 0;
 }
